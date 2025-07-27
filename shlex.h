@@ -229,7 +229,9 @@ void shlex_append_quoted_sized(Shlex *s, const char *str, size_t n)
     for (size_t i = 0; i < n; ++i) {
         if (str[i] == '\'') {
             shlex__string_append(s, '\'');
+            shlex__string_append(s, '"');
             shlex__string_append(s, '\'');
+            shlex__string_append(s, '"');
             shlex__string_append(s, '\'');
         } else {
             shlex__string_append(s, str[i]);
@@ -333,6 +335,9 @@ void joining(void)
     shlex_append_quoted(&s, "bar");
     shlex_append_quoted(&s, "baz");
     shlex_append_quoted(&s, "Hello, 'World'");
+    printf("    %s\n", shlex_join(&s));
+
+    shlex_append_quoted(&s, "a'b");
     printf("    %s\n", shlex_join(&s));
 
     printf("\n");
