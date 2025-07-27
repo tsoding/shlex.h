@@ -1,4 +1,4 @@
-# Simple lexical analysis for Shell Syntax
+# shlex.h
 
 Python's [shlex](https://docs.python.org/3/library/shlex.html) but in C.
 
